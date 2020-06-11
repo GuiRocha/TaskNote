@@ -5,6 +5,7 @@ import com.guilherme.TaskNote.repository.TaskRepository;
 import com.guilherme.TaskNote.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collections;
 import java.util.List;
 
 public class TaskServiceImpl implements TaskService {
@@ -17,8 +18,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task getTaskById(Long id) {
-        return null;
+    public List<Task> getTaskById(Long id) {
+        return taskRepository.findAllById(Collections.singleton(id));
     }
 
     @Override

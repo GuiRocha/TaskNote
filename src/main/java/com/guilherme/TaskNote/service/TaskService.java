@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface TaskService {
     public List<Task> getAllTask();
     public List<Task> getTaskById(Long id);

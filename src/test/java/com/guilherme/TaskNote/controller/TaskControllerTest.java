@@ -39,4 +39,15 @@ class TaskControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/task").accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", hasSize(4))).andDo(print());
     }
+    @Test
+    public void verifyTaskById() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/todo/2").accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.id").exists())
+                .andExpect(jsonPath("$.text").exists())
+                .andExpect(jsonPath("$.completed").exists())
+                .andExpect(jsonPath("$.id").value(2))
+                .andExpect(jsonPath("$.text").value("fazer deploy do projeto"))
+                .andExpect(jsonPath("$.completed").value(false))
+                .andDo(print());
+    }
 }

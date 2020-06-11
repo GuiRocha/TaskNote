@@ -50,4 +50,11 @@ class TaskControllerTest {
                 .andExpect(jsonPath("$.completed").value(true))
                 .andDo(print());
     }
+    @Test
+    public void verifyNullTask() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/task/6").accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.errorCode").value(400))
+                .andExpect(jsonPath("$.message").value("The request could not be understood by the server due to malformed syntax."))
+                .andDo(print());
+    }
 }

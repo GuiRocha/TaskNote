@@ -1,7 +1,13 @@
 package com.guilherme.TaskNote.controller;
 
+
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+
 import com.guilherme.TaskNote.TaskNoteApplication;
 import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,7 +37,7 @@ class TaskControllerTest {
     @Autowired
     private WebApplicationContext wac;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
 
@@ -40,6 +46,6 @@ class TaskControllerTest {
     @Test
     public void verifyAllTasks() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/task").accept(MediaType.APPLICATION_JSON))
-                .andExpect((ResultMatcher) MockRestRequestMatchers.jsonPath("$", hasSize(4))).andDo(print());
+                .andExpect(jsonPath("$", hasSize(4))).andDo(print());
     }
 }

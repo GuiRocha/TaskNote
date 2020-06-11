@@ -30,12 +30,12 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/task/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Task> getToDoById(@PathVariable("id") Long id) throws TaskException {
+    public ResponseEntity<Task> getToDoById(@PathVariable("id") Long id) throws TaskException{
         logger.info("Task id " + id);
-        Task task = (Task) taskService.getTaskById(id);
+        Task task = taskService.getTaskById(id);
         if (task == null || task.getId() <= 0){
-            throw new TaskException("Task não encontrada");
+            throw new TaskException("Task não existe");
         }
-        return new ResponseEntity<Task>((Task) taskService.getTaskById(id), HttpStatus.OK);
+        return new ResponseEntity<Task>(taskService.getTaskById(id), HttpStatus.OK);
     }
 }

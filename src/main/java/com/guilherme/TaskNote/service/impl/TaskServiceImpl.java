@@ -1,13 +1,14 @@
 package com.guilherme.TaskNote.service.impl;
 
 import com.guilherme.TaskNote.Model.Task;
+import com.guilherme.TaskNote.exception.TaskException;
 import com.guilherme.TaskNote.repository.TaskRepository;
 import com.guilherme.TaskNote.service.TaskService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -23,8 +24,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> getTaskById(Long id) {
-        return taskRepository.findAllById(Collections.singleton(id));
+    public Task getTaskById(Long id) throws TaskException {
+        Optional<Task> obj = taskRepository.findById(id);
+        try {
+            return obj.orElseThrow(() -> new TaskException("Task não encontrada"));
+        } finally {}
     }
 
     @Override

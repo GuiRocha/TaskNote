@@ -20,6 +20,7 @@ public class TaskNoteApplication {
 			taskRepository.save(new Task(null,"fazer deploy do projeto", true));
 			taskRepository.save(new Task(null,"API Rest", false));
 			taskRepository.save(new Task(null, "AWS amazon", true));
+
 		};
 	}
 }

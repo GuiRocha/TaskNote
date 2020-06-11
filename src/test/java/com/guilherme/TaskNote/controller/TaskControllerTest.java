@@ -47,7 +47,7 @@ class TaskControllerTest {
                 .andExpect(jsonPath("$.completed").exists())
                 .andExpect(jsonPath("$.id").value(2))
                 .andExpect(jsonPath("$.text").value("fazer deploy do projeto"))
-                .andExpect(jsonPath("$.completed").value(false))
+                .andExpect(jsonPath("$.completed").value(true))
                 .andDo(print());
     }
 }

@@ -29,6 +29,6 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void removeTask(Task task) {
-
+        taskRepository.delete(task);
     }
 }

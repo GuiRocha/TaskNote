@@ -25,4 +25,6 @@ public class TaskController {
         logger.info("Monstrando todas as Tasks");
         return new ResponseEntity<List<Task>>(taskService.getAllTask(), HttpStatus.OK);
     }
+
+
 }

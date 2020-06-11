@@ -41,7 +41,7 @@ class TaskControllerTest {
     }
     @Test
     public void verifyTaskById() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/todo/2").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(MockMvcRequestBuilders.get("/task/2").accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id").exists())
                 .andExpect(jsonPath("$.text").exists())
                 .andExpect(jsonPath("$.completed").exists())
